@@ -10,6 +10,7 @@ module.exports = function (RED) {
     this.port = n.port;
     this.path = n.path;
     this.reconnection = n.reconnection;
+    this.auth = n.auth;
   }
   RED.nodes.registerType('socketio-config', SocketIOConfig);
 
@@ -127,6 +128,11 @@ module.exports = function (RED) {
     if (config.namespace) {
       uri = path.join(uri, config.namespace);
     }
+
+    if (config.auth) {
+      options.auth = config.auth;
+    }
+
     return require('socket.io-client').connect(uri, options);
   }
 

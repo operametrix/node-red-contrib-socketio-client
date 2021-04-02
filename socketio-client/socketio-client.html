@@ -21,10 +21,20 @@
         reconnection: {
           value: true,
           required: false
+        },
+        auth: {
+          value: "",
+          required: false
         }
       },
       label: function() {
         return this.host + ":" + this.port + this.path;
+      },
+      oneditprepare: function() {
+        $("#node-config-input-auth").typedInput({
+          type:"json",
+          types:["json"]
+        })
       }
     });
   </script>
@@ -41,6 +51,10 @@
     <div class="form-row">
       <label for="node-config-input-path"><i class="fa fa-folder"></i> Path</label>
       <input type="text" id="node-config-input-path">
+    </div>
+    <div class="form-row">
+      <label for="node-config-input-auth"><i class="fa fa-key"></i> Auth</label>
+      <input type="text" id="node-config-input-auth" placeholder="Auth">
     </div>
   </script>
 
